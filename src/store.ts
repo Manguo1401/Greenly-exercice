@@ -1,12 +1,10 @@
-import { PartnerName } from "./store.types";
-
 export class DiscountOffer {
-  partnerName: PartnerName;
+  partnerName: string;
   expiresIn: number;
   discountInPercent: number;
 
   constructor(
-    partnerName: PartnerName,
+    partnerName: string,
     expiresIn: number,
     discountRateInPercent: number
   ) {
