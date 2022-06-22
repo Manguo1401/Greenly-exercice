@@ -1,5 +1,7 @@
 import { Store, DiscountOffer } from "./store";
 
+// TOUPGRADE Testing could be robustified by adding for loops testing a month of days to be sure that any situation is checked.
+
 describe("Checking store", () => {
   let store: Store;
 
@@ -36,14 +38,16 @@ describe("Checking store", () => {
       );
     });
 
-    it("should increase the discount by 2, 3 or 5 and decrease expiresIn by 1 for Vinted when expiresIn is respectively =<10, =<5, =<3", () => {
+    it("should increase the discount by 1, 2 or 3  and decrease expiresIn by 1 for Vinted when expiresIn is respectively =<10, =<5", () => {
       let vintedStore = new Store([
+        new DiscountOffer("Vinted", 15, 10),
         new DiscountOffer("Vinted", 10, 10),
         new DiscountOffer("Vinted", 5, 10)
       ]);
       vintedStore.updateDiscounts();
 
       expect(vintedStore.discountOffers).toEqual([
+        new DiscountOffer("Vinted", 14, 11),
         new DiscountOffer("Vinted", 9, 12),
         new DiscountOffer("Vinted", 4, 13)
       ]);
@@ -78,7 +82,7 @@ describe("Checking store", () => {
       expect(store.discountOffers[2]).toEqual(new DiscountOffer("Ilek", 0, 40));
     });
 
-    it("Should have a discount back to 0 for Vinted", () => {
+    it("should have a discount back to 0 for Vinted", () => {
       expect(store.discountOffers[3]).toEqual(
         new DiscountOffer("Vinted", -1, 0)
       );
