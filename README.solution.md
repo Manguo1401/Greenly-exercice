@@ -11,12 +11,12 @@
 ## Refactor method
 
 - The store class is a if/else mess. It needs to be split into comprehensible small methods or functions (Keep It Simple Stupid)
-- I kept in mind that client names directly hard coded isn't a good practice so I mapped them with offers that I created. This would able to push this mapping in a DB or other and dynamically update the offers through a UI or other when a client has a new offer (or that a new client would have an existing offer). I also personalised the discount steps and more to be able to personalise a new offer depending on a numeric value. 
+- I kept in mind that client names directly hard coded isn't a good practice so I mapped them with offers that I created. This would able to push this mapping in a DB and dynamically update the client offers or add new clients with an existing offer. I also personalised the discount steps and more to be able to personalise a new offer depending on a numeric value. 
 
 ## Add new tests and comply to them by integrating the new code
 
 - Add new tests to prepare for the evolutions asked by the exercise
-- Add the evolutions in the code
+- With the offerMapping we just need to add BackMarket as a client in the offerMapping and the job is done.
 
 ## Upgrades
 
