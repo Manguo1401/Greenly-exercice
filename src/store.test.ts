@@ -11,7 +11,8 @@ describe("Checking store", () => {
         new DiscountOffer("Velib", 20, 30),
         new DiscountOffer("Naturalia", 10, 5),
         new DiscountOffer("Ilek", 15, 40),
-        new DiscountOffer("Vinted", 20, 40)
+        new DiscountOffer("Vinted", 20, 40),
+        new DiscountOffer("BackMarket", 20, 40)
       ]);
 
       store.updateDiscounts();
@@ -52,6 +53,12 @@ describe("Checking store", () => {
         new DiscountOffer("Vinted", 4, 13)
       ]);
     });
+
+    it("should decrease the discount by 2 and expiresIn by 1 for BackMarket", () => {
+      expect(store.discountOffers[4]).toEqual(
+        new DiscountOffer("BackMarket", 19, 38)
+      );
+    });
   });
 
   describe("Checking overdue discounts", () => {
@@ -60,7 +67,8 @@ describe("Checking store", () => {
         new DiscountOffer("Velib", 0, 30),
         new DiscountOffer("Naturalia", 0, 5),
         new DiscountOffer("Ilek", 0, 40),
-        new DiscountOffer("Vinted", 0, 40)
+        new DiscountOffer("Vinted", 0, 40),
+        new DiscountOffer("BackMarket", 0, 40)
       ]);
 
       store.updateDiscounts();
@@ -85,6 +93,12 @@ describe("Checking store", () => {
     it("should have a discount back to 0 for Vinted", () => {
       expect(store.discountOffers[3]).toEqual(
         new DiscountOffer("Vinted", -1, 0)
+      );
+    });
+
+    it("should decrease the discount by 4 and expiresIn by 1 if the expiration date has passed for BackMarket", () => {
+      expect(store.discountOffers[4]).toEqual(
+        new DiscountOffer("BackMarket", -1, 36)
       );
     });
   });
